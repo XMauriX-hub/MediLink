@@ -18,7 +18,7 @@ export default function ListaDoctores() {
   const checkingAuth = useAuthCheck();
 
   useEffect(() => {
-    fetch("../DatosPrueba/doctores.json")
+    fetch("/Doctores.json")
       .then((res) => res.json())
       .then((data) => setUsers(data))
       .catch((err) => console.error("Error cargando doctores:", err));

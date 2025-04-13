@@ -18,7 +18,7 @@ export default function ListaPacientes() {
   const checkingAuth = useAuthCheck();
 
   useEffect(() => {
-    fetch("../DatosPrueba/pacientes.json")
+    fetch("Pacientes.json")
       .then((res) => res.json())
       .then((data) => setUsers(data))
       .catch((err) => console.error("Error cargando pacientes:", err));

@@ -19,14 +19,14 @@ export default function Login() {
   }, [navigate]);
 
   const handleSubmit = async () => {
-    /*Borrar esto y descomentar la parte que dice API para implementarla */
     try {
-      const response = await fetch('../DatosPrueba/login.json');
+      const response = await fetch('/login.json');
       if (!response.ok) {
         throw new Error('Error al obtener los usuarios');
       }
-      const users = await response.json();
-      if (users.email === email && users.password === password) {
+      const user = await response.json();
+  
+      if (user.email === email && user.password === password) {
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userEmail", email);
         navigate("/Dashboard");
@@ -63,19 +63,25 @@ export default function Login() {
                 <Form.Item
                   label={<span style={{ fontSize: "1.2rem" }}>Correo Electronico</span>}
                   name="identificator"
-                  onChange={(e) => setEmail(e.target.value)}
                   rules={[{ required: true, message: "Ingrese Correo" }]}
                 >
-                  <Input placeholder="Ingrese su Correo" size="large" />
+                  <Input
+                    placeholder="Ingrese su Correo"
+                    size="large"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </Form.Item>
 
                 <Form.Item
                   label={<span style={{ fontSize: "1.2rem" }}>Contraseña</span>}
                   name="password"
-                  onChange={(e) => setPassword(e.target.value)}
                   rules={[{ required: true, message: "Ingrese Contraseña" }]}
                 >
-                  <Input.Password placeholder="Ingrese su contraseña" size="large" />
+                  <Input.Password
+                    placeholder="Ingrese su contraseña"
+                    size="large"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                 </Form.Item>
                 <Form.Item>
                   <Button
