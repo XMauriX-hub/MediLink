@@ -4,17 +4,23 @@ import { CalendarOutlined, UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { Menu } from "./Menu"
 import { PageTransition } from "../utils/PageTransition";
+import { useAuthCheck } from "../utils/AuthCheck";
+import { LoadingScreen } from "../utils/Loadingscreen";
 
 const { Content } = Layout;
 const { Text } = Typography;
 
 export default function Dashboard() {
     const navigate = useNavigate();
+
+      const checkingAuth = useAuthCheck();
     
+      if (checkingAuth) return <LoadingScreen />;
+
     return (
         <Layout style={{ minHeight: "100vh" }}>
             <PageTransition>
-            <Menu/>
+                <Menu />
                 <Content>
                     <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", padding: "16px" }}>
                         <div
@@ -34,7 +40,7 @@ export default function Dashboard() {
                                     height: "120px",
                                     flex: "1 1 calc(100% - 32px)",
                                     maxWidth: "250px",
-                                    maxHeight:"120px",
+                                    maxHeight: "120px",
                                 }}
                                 onClick={() => navigate("/Pacientes")}
                             >
@@ -51,7 +57,7 @@ export default function Dashboard() {
                                     height: "120px",
                                     flex: "1 1 calc(100% - 32px)",
                                     maxWidth: "250px",
-                                    maxHeight:"120px",
+                                    maxHeight: "120px",
                                 }}
                                 onClick={() => navigate("/Doctores")}
                             >

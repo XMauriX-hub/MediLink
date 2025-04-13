@@ -1,0 +1,75 @@
+[
+    {
+      "id": 1,
+      "nombre": "Diego",
+      "apellido": "Fernández",
+      "correo": "diego.fernandez@gmail.com",
+      "rol": "Paciente",
+      "estado": "Activo",
+      "fechaRegistro": "2023-02-01"
+    },
+    {
+      "id": 2,
+      "nombre": "Mariana",
+      "apellido": "Suárez",
+      "correo": "mariana.suarez@gmail.com",
+      "rol": "Paciente",
+      "estado": "Activo",
+      "fechaRegistro": "2022-12-15"
+    },
+    {
+      "id": 3,
+      "nombre": "Javier",
+      "apellido": "Ortiz",
+      "correo": "javier.ortiz@gmail.com",
+      "rol": "Paciente",
+      "estado": "Inactivo",
+      "fechaRegistro": "2021-07-20"
+    },
+    {
+      "id": 4,
+      "nombre": "Lucía",
+      "apellido": "Cabrera",
+      "correo": "lucia.cabrera@gmail.com",
+      "rol": "Paciente",
+      "estado": "Activo",
+      "fechaRegistro": "2020-10-02"
+    },
+    {
+      "id": 5,
+      "nombre": "Gabriel",
+      "apellido": "Vega",
+      "correo": "gabriel.vega@gmail.com",
+      "rol": "Paciente",
+      "estado": "Inactivo",
+      "fechaRegistro": "2019-05-18"
+    },
+    {
+      "id": 6,
+      "nombre": "Valentina",
+      "apellido": "Morales",
+      "correo": "valentina.morales@gmail.com",
+      "rol": "Paciente",
+      "estado": "Activo",
+      "fechaRegistro": "2021-03-22"
+    },
+    {
+      "id": 7,
+      "nombre": "Santiago",
+      "apellido": "Ruiz",
+      "correo": "santiago.ruiz@gmail.com",
+      "rol": "Paciente",
+      "estado": "Activo",
+      "fechaRegistro": "2023-06-10"
+    },
+    {
+      "id": 8,
+      "nombre": "Camila",
+      "apellido": "Herrera",
+      "correo": "camila.herrera@gmail.com",
+      "rol": "Paciente",
+      "estado": "Inactivo",
+      "fechaRegistro": "2020-01-05"
+    }
+  ]
+  

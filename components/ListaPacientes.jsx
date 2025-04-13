@@ -1,75 +1,35 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Table, Button, Input, Space, Typography, Pagination, Layout } from "antd";
-import { SearchOutlined, UserOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined, SearchOutlined, UserOutlined } from "@ant-design/icons";
 import { Menu } from "./Menu";
 import { PageTransition } from "../utils/PageTransition";
 import { useNavigate } from "react-router-dom";
+import { useAuthCheck } from "../utils/AuthCheck";
+import { LoadingScreen } from "../utils/Loadingscreen";
 
 const { Title } = Typography;
 const { Content } = Layout;
 
 export default function ListaPacientes() {
   const [searchText, setSearchText] = useState("");
+  const [users, setUsers] = useState([]);
   const navigate = useNavigate();
+  const checkingAuth = useAuthCheck();
 
-  const users = [
-    {
-      id: 1,
-      nombre: "Angel",
-      apellido: "Gonzalez",
-      correo: "agonzalez@gmail.com",
-      rol: "Cliente",
-      estado: "Inactivo",
-      fechaRegistro: "16/03/2020",
-    },
-    {
-      id: 2,
-      nombre: "Jorge",
-      apellido: "Perez",
-      correo: "jperez@gmail.com",
-      rol: "Cliente",
-      estado: "Inactivo",
-      fechaRegistro: "16/03/2020",
-    },
-    {
-      id: 3,
-      nombre: "Juan",
-      apellido: "Salazar",
-      correo: "jsalazar@gmail.com",
-      rol: "Cliente",
-      estado: "Activo",
-      fechaRegistro: "15/03/2020",
-    },
-    {
-      id: 4,
-      nombre: "Leonel",
-      apellido: "Fernandez",
-      correo: "lfernandez@gmail.com",
-      rol: "Cliente",
-      estado: "Activo",
-      fechaRegistro: "12/03/2020",
-    },
-    {
-      id: 5,
-      nombre: "Mayra",
-      apellido: "Jimenez",
-      correo: "mjimenez@gmail.com",
-      rol: "Cliente",
-      estado: "Activo",
-      fechaRegistro: "10/03/2020",
-    },
-    {
-      id: 6,
-      nombre: "Stephanie",
-      apellido: "Alvarez",
-      correo: "salvarez@gmail.com",
-      rol: "Cliente",
-      estado: "Inactivo",
-      fechaRegistro: "10/03/2020",
-    },
-  ];
+  useEffect(() => {
+    fetch("../DatosPrueba/pacientes.json")
+      .then((res) => res.json())
+      .then((data) => setUsers(data))
+      .catch((err) => console.error("Error cargando pacientes:", err));
+  }, []);
 
+  if (checkingAuth) return <LoadingScreen />;
+
+  const filteredUsers = users.filter((user) =>
+    user.nombre.toLowerCase().includes(searchText.toLowerCase()) ||
+    user.apellido.toLowerCase().includes(searchText.toLowerCase())
+  );
   const columns = [
     {
       title: <span>Nombre</span>,
@@ -140,11 +100,6 @@ export default function ListaPacientes() {
       ),
     },
   ];
-
-  const filteredUsers = users.filter((user) =>
-    user.nombre.toLowerCase().includes(searchText.toLowerCase())
-  );
-
   return (
     <Layout>
       <PageTransition>
@@ -153,7 +108,8 @@ export default function ListaPacientes() {
           <div style={{ padding: "20px", maxWidth: "100%", overflow: "auto" }}>
             <Button type="primary" style={{ width: 100, marginBottom: 20, }}
               onClick={() => navigate("/Dashboard")}
-            >Volver
+            >
+              <ArrowLeftOutlined />Volver
             </Button>
             <div style={{ backgroundColor: "#ffffff", borderRadius: "8px", boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)", padding: "24px" }}>
               <Space align="center" style={{ marginBottom: "24px" }}>
@@ -177,7 +133,7 @@ export default function ListaPacientes() {
                   prefix={<SearchOutlined />}
                   value={searchText}
                   onChange={(e) => setSearchText(e.target.value)}
-                  style={{ width: "auto", padding: 10, fontSize: 20 }}
+                  style={{ width: "auto", fontSize: 17 }}
                 />
               </div>
 

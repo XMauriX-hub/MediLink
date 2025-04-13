@@ -1,0 +1,48 @@
+[
+    {
+      "id": 1,
+      "nombre": "Laura",
+      "apellido": "Martínez",
+      "correo": "laura.martinez@clinicamedica.com",
+      "rol": "Doctor",
+      "estado": "Activo",
+      "fechaRegistro": "2021-02-10"
+    },
+    {
+      "id": 2,
+      "nombre": "Carlos",
+      "apellido": "Ramírez",
+      "correo": "carlos.ramirez@clinicamedica.com",
+      "rol": "Doctor",
+      "estado": "Activo",
+      "fechaRegistro": "2020-11-25"
+    },
+    {
+      "id": 3,
+      "nombre": "Andrea",
+      "apellido": "López",
+      "correo": "andrea.lopez@clinicamedica.com",
+      "rol": "Doctor",
+      "estado": "Inactivo",
+      "fechaRegistro": "2019-09-17"
+    },
+    {
+      "id": 4,
+      "nombre": "Miguel",
+      "apellido": "Santos",
+      "correo": "miguel.santos@clinicamedica.com",
+      "rol": "Doctor",
+      "estado": "Activo",
+      "fechaRegistro": "2023-01-05"
+    },
+    {
+      "id": 5,
+      "nombre": "Paula",
+      "apellido": "Gómez",
+      "correo": "paula.gomez@clinicamedica.com",
+      "rol": "Doctor",
+      "estado": "Inactivo",
+      "fechaRegistro": "2022-06-30"
+    }
+  ]
+  

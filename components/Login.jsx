@@ -1,7 +1,7 @@
 import { LogOut } from "lucide-react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { PageTransition } from "/utils/PageTransition";
-import { Button, Input, Layout, Typography, Form, Card, Space } from "antd";
+import { Button, Input, Layout, Typography, Form, Card } from "antd";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -10,6 +10,13 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
 
   const handleSubmit = async () => {
     /*Borrar esto y descomentar la parte que dice API para implementarla */
@@ -20,7 +27,11 @@ export default function Login() {
       }
       const users = await response.json();
 
-      if (users.email == email && users.password == password) {
+      if (users.email === email && users.password === password) {
+        // Guardar información del usuario en localStorage
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userEmail", email);
+
         navigate("/Dashboard");
       } else {
         console.log("Usuario o contraseña incorrectos");
@@ -40,26 +51,22 @@ export default function Login() {
   };
 
   return (
-    <PageTransition>
-      <Layout>
+    <Layout>
+      <PageTransition>
         <Content style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "100vh" }}>
-          <div style={{ width: "100%", maxWidth: "600px",}}>
+          <div style={{ width: "100%", maxWidth: "600px", }}>
             <Card style={{ padding: "20px", borderRadius: "8px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "30px", marginTop: "30px", }}>
                 <LogOut style={{ fontSize: "2rem", color: "#2BB2E3", marginRight: "10px" }} />
-                <Title level={1} style={{ margin: "0", fontSize: "1.8rem",color:"#2BB2E3", }}>Iniciar Sesión</Title>
+                <Title level={1} style={{ margin: "0", fontSize: "1.8rem", color: "#2BB2E3", }}>Iniciar Sesión</Title>
               </div>
-              <Form
-                layout="vertical"
-                onFinish={handleSubmit}
-                requiredMark={false}
-              >
+              <Form layout="vertical" onFinish={handleSubmit} requiredMark={false}>
                 <div style={{ width: "100%", borderBottom: "1px solid black", marginBottom: "20px" }}></div>
                 <Form.Item
                   label={<span style={{ fontSize: "1.2rem" }}>Correo Electronico</span>}
                   name="identificator"
                   onChange={(e) => setEmail(e.target.value)}
-                  rules={[{ required: true, message: "Ingrese Contraseña" }]}
+                  rules={[{ required: true, message: "Ingrese Correo" }]}
                 >
                   <Input placeholder="Ingrese su Correo" size="large" />
                 </Form.Item>
@@ -68,7 +75,7 @@ export default function Login() {
                   label={<span style={{ fontSize: "1.2rem" }}>Contraseña</span>}
                   name="password"
                   onChange={(e) => setPassword(e.target.value)}
-                  rules={[{ required: true, message: "Ingrese Email" }]}
+                  rules={[{ required: true, message: "Ingrese Contraseña" }]}
                 >
                   <Input.Password placeholder="Ingrese su contraseña" size="large" />
                 </Form.Item>
@@ -86,11 +93,11 @@ export default function Login() {
               </Form>
             </Card>
             <div style={{ textAlign: "center", fontSize: "0.875rem", color: "gray", marginTop: "10px" }}>
-              © {new Date().getFullYear()} Gestor de Productos | Desarollado por Grupo Tecnico.
+              © {new Date().getFullYear()} Gestor de Productos | Desarrollado por Grupo Tecnico.
             </div>
           </div>
         </Content>
-      </Layout>
-    </PageTransition>
+      </PageTransition>
+    </Layout>
   );
 }

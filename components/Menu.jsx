@@ -5,6 +5,12 @@ import { useNavigate } from "react-router-dom";
 
 export function Menu() {
     const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("userEmail");
+        navigate("/");
+      };
     return (
         <Header
             style={{
@@ -35,10 +41,11 @@ export function Menu() {
                 preview={false}
             />
             <Button
-                icon={<LogOut style={{ height: 30, width: 30 }} />}
-                onClick={() => navigate("/")}
-                style={{height: 40, width: 40 }}
+                icon={<LogOut style={{ height: 15, width: 15 }} />}
+                onClick={() => handleLogout()}
+                style={{height: 40, width: 150, }}
             >
+             Cerrar Sesion
             </Button>
         </Header>
     );
