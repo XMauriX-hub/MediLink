@@ -27,7 +27,7 @@ export function Menu() {
             }}
         >
             <Image
-                src="../Image/Logo.jpeg"
+                src="/Logo.jpeg"
                 alt="Logo"
                 hoverable
                 style={{
