@@ -1,5 +1,5 @@
 import { LogOut } from "lucide-react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { PageTransition } from "/utils/PageTransition";
 import { Button, Input, Layout, Typography, Form, Card } from "antd";
 import { useNavigate } from "react-router-dom";
@@ -26,12 +26,9 @@ export default function Login() {
         throw new Error('Error al obtener los usuarios');
       }
       const users = await response.json();
-
       if (users.email === email && users.password === password) {
-        // Guardar información del usuario en localStorage
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userEmail", email);
-
         navigate("/Dashboard");
       } else {
         console.log("Usuario o contraseña incorrectos");
@@ -39,6 +36,7 @@ export default function Login() {
     } catch (error) {
       console.error('Error al intentar loguear:', error);
     }
+
     /*API para implementar: 
      const formData = { password,email };
     const data = await POST("login", formData);

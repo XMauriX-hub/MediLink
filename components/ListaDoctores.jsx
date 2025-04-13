@@ -6,7 +6,7 @@ import { Menu } from "./Menu";
 import { PageTransition } from "../utils/PageTransition";
 import { useNavigate } from "react-router-dom";
 import { useAuthCheck } from "../utils/AuthCheck";
-import { LoadingScreen } from "../utils/Loadingscreen";
+import { LoadingScreen } from "../utils/LoadingScreen";
 
 const { Title } = Typography;
 const { Content } = Layout;

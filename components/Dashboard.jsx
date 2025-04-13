@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Menu } from "./Menu"
 import { PageTransition } from "../utils/PageTransition";
 import { useAuthCheck } from "../utils/AuthCheck";
-import { LoadingScreen } from "../utils/Loadingscreen";
+import { LoadingScreen } from "../utils/LoadingScreen";
 
 const { Content } = Layout;
 const { Text } = Typography;
